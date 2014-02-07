@@ -16,6 +16,7 @@ class User {
 		switch availability {
 			Availability : availabilities.contains(availability)
 			LocalDate : return true
+			default: return false
 		}
 		availabilities.contains(availability)
 	}

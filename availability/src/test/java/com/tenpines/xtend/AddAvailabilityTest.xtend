@@ -1,16 +1,17 @@
 package com.tenpines.xtend
 
-import org.junit.Test
-import static org.junit.Assert.*
-import com.tenpines.xtend.model.User
 import com.tenpines.xtend.model.Availability
-import org.joda.time.DateTime
+import com.tenpines.xtend.model.User
 import org.joda.time.LocalDate
+import org.junit.Test
+
+import static org.junit.Assert.*
+import org.joda.time.LocalTime
 
 class AddAvailabilityTest {
 
 	val someone = new User
-	val availability = new Availability( new LocalDate )
+	val availability = new Availability( new LocalDate, new LocalTime )
 
 	@Test
 	def void test1() {
