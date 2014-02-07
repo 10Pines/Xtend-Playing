@@ -1,21 +1,26 @@
 package com.tenpines.xtend.model
 
+import com.tenpines.xtend.model.timeLapse.TimeLapse
+import java.util.List
 import org.joda.time.LocalDate
-import org.joda.time.LocalTime
 
 class Availability {
 	
 	LocalDate date;
-	LocalTime time;
+	List<TimeLapse> timeRanges;
 	
-	new(LocalDate aDate, LocalTime aTime) {
+	new(LocalDate aDate, List<TimeLapse> someTimeRanges) {
 		date = aDate;
-		time = aTime;
+		timeRanges = someTimeRanges;
 	}
 	
 	
-	def isAvailable(LocalDate aDate, LocalTime aTime) {
-		date.equals(aDate) && time.equals(aTime)
+	def isAvailable(LocalDate aDate, TimeLapse aTimeLapse) {
+		date.equals(aDate) && hasAvailabilityFor(aTimeLapse)
+	}
+	
+	def hasAvailabilityFor(TimeLapse lapse) {
+		timeRanges.exists[ timeRange | timeRange.includes(lapse) ]
 	}
 	
 }
