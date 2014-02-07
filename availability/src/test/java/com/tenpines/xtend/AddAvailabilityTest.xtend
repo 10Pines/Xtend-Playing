@@ -5,11 +5,12 @@ import static org.junit.Assert.*
 import com.tenpines.xtend.model.User
 import com.tenpines.xtend.model.Availability
 import org.joda.time.DateTime
+import org.joda.time.LocalDate
 
 class AddAvailabilityTest {
 
 	val someone = new User
-	val availability = new Availability
+	val availability = new Availability( new LocalDate )
 
 	@Test
 	def void test1() {
@@ -24,7 +25,7 @@ class AddAvailabilityTest {
 	
 	@Test
 	def void test3() {
-		val date = new DateTime(2012, 12, 1, 0, 0)
+		val date = new LocalDate(2012, 12, 1)
 		someone.addAvailability(availability)
 		assertTrue(someone.isAvailable(date))
 	}

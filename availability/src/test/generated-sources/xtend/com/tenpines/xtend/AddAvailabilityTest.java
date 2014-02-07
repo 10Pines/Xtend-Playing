@@ -3,7 +3,7 @@ package com.tenpines.xtend;
 import com.tenpines.xtend.model.Availability;
 import com.tenpines.xtend.model.User;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,7 +18,8 @@ public class AddAvailabilityTest {
   
   private final Availability availability = new Function0<Availability>() {
     public Availability apply() {
-      Availability _availability = new Availability();
+      LocalDate _localDate = new LocalDate();
+      Availability _availability = new Availability(_localDate);
       return _availability;
     }
   }.apply();
@@ -38,8 +39,8 @@ public class AddAvailabilityTest {
   
   @Test
   public void test3() {
-    DateTime _dateTime = new DateTime(2012, 12, 1, 0, 0);
-    final DateTime date = _dateTime;
+    LocalDate _localDate = new LocalDate(2012, 12, 1);
+    final LocalDate date = _localDate;
     this.someone.addAvailability(this.availability);
     boolean _isAvailable = this.someone.isAvailable(date);
     Assert.assertTrue(_isAvailable);

@@ -1,11 +1,18 @@
 package com.tenpines.xtend.model
 
-import org.joda.time.DateTime
+import org.joda.time.LocalDate
 
 class Availability {
 	
-	def isAvailable(DateTime time) {
-		false
+	LocalDate date;
+	
+	new(LocalDate aDate) {
+		date = aDate;
+	}
+	
+	
+	def isAvailable(LocalDate aDate) {
+		date.equals(aDate)
 	}
 	
 }

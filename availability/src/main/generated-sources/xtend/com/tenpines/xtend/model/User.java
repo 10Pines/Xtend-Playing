@@ -4,7 +4,7 @@ import com.tenpines.xtend.model.Availability;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 
 @SuppressWarnings("all")
 public class User {
@@ -31,7 +31,7 @@ public class User {
         }
       }
       if (!_matched) {
-        if (availability instanceof DateTime) {
+        if (availability instanceof LocalDate) {
           _matched=true;
           return true;
         }

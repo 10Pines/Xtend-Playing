@@ -1,8 +1,8 @@
 package com.tenpines.xtend.model
 
-import java.util.List
 import java.util.ArrayList
-import org.joda.time.DateTime
+import java.util.List
+import org.joda.time.LocalDate
 
 class User {
 	
@@ -15,7 +15,7 @@ class User {
 	def isAvailable(Object availability) {
 		switch availability {
 			Availability : availabilities.contains(availability)
-			DateTime : return true
+			LocalDate : return true
 		}
 		availabilities.contains(availability)
 	}
