@@ -1,13 +1,17 @@
 package com.tenpines.xtend.timeLapse
 
+import com.tenpines.xtend.model.timeLapse.TimeLapse
+import org.joda.time.DateTime
+import org.joda.time.DateTimeConstants
 import org.joda.time.LocalTime
 import org.junit.Test
+
 import static org.junit.Assert.*
-import com.tenpines.xtend.model.timeLapse.TimeLapse
 
 class TimeLapseTest {
 	
 	val range = new TimeLapse(new LocalTime(15, 0), new LocalTime(18, 0))
+	
 	
 	@Test
 	def void wantedIntervalIsWithinTheGivenRange() {
@@ -50,4 +54,5 @@ class TimeLapseTest {
 		val halfPastEight = new LocalTime(20, 30)
 		assertFalse( range.includes(new TimeLapse(halfPastSix, halfPastEight)) )
 	}
+	
 }
