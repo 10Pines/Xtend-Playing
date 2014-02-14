@@ -1,8 +1,6 @@
 package com.tenpines.xtend.timeLapse
 
 import com.tenpines.xtend.model.timeLapse.TimeLapse
-import org.joda.time.DateTime
-import org.joda.time.DateTimeConstants
 import org.joda.time.LocalTime
 import org.junit.Test
 

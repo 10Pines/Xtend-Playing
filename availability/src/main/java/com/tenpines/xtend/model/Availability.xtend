@@ -3,24 +3,47 @@ package com.tenpines.xtend.model
 import com.tenpines.xtend.model.timeLapse.TimeLapse
 import java.util.List
 import org.joda.time.LocalDate
+import java.util.ArrayList
+import java.util.Arrays
 
 class Availability {
 	
-	LocalDate date;
-	List<TimeLapse> timeRanges;
+	@Property	
+	DayOfWeek dayOfWeek
 	
-	new(LocalDate aDate, List<TimeLapse> someTimeRanges) {
-		date = aDate;
-		timeRanges = someTimeRanges;
+	@Property
+	List<TimeLapse> timeLapses = new ArrayList
+	
+	new(DayOfWeek aDayOfWeek, TimeLapse... someTimeRanges) {
+		dayOfWeek = aDayOfWeek
+		timeLapses = new ArrayList(Arrays.asList(someTimeRanges))
 	}
 	
 	
 	def isAvailable(LocalDate aDate, TimeLapse aTimeLapse) {
-		date.equals(aDate) && hasAvailabilityFor(aTimeLapse)
+		isAvailable(aDate) && hasAvailabilityFor(aTimeLapse)
 	}
 	
+	def isAvailable(Object aDate){
+		switch(aDate){
+			LocalDate :{ 
+				val DayOfWeek dayOfWeekForAvailability = DayOfWeek.dayFromJodaIndex(aDate.getDayOfWeek) 
+				return dayOfWeek.equals(dayOfWeekForAvailability)
+			}
+			DayOfWeek : {
+				return dayOfWeek.equals(aDate)
+			}
+			default : throw new UnsupportedOperationException("Unhandled condition")
+		}
+		
+	}
+	
+	def addTimeLapses(List<TimeLapse> someLapses){
+		this.timeLapses.addAll(someLapses)
+	}
+		
 	def hasAvailabilityFor(TimeLapse lapse) {
-		timeRanges.exists[ timeRange | timeRange.includes(lapse) ]
+		timeLapses.exists[ timeRange | timeRange.includes(lapse) ]
 	}
 	
 }

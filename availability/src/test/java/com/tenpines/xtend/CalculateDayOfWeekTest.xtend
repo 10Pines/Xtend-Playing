@@ -12,4 +12,11 @@ class CalculateDayOfWeekTest {
 		val int day = friday.getDayOfWeek
 		assertEquals(DateTimeConstants.FRIDAY, day)
 	}
+	
+	@Test
+	def void testObtainDayOfWeekFromSundayItIsCorrect(){
+		val sunday =  new DateTime(2014,02,16,1,0,0)
+		val int day = sunday.getDayOfWeek
+		assertEquals(DateTimeConstants.SUNDAY, day)
+	}
 }
