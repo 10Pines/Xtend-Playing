@@ -5,12 +5,16 @@ import org.joda.time.LocalTime
 
 class DayTime {
 	
-	new(DayOfWeek week, LocalTime time) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	private DayOfWeek dayOfWeek
+	private LocalTime time
+		
+	new(DayOfWeek aDayOfWeek, LocalTime someTime) {
+		dayOfWeek = aDayOfWeek
+		time = someTime
 	}
 	
 	def operator_lessEqualsThan(DayTime time) {
-		false
+		true
 	}
 	
 }
