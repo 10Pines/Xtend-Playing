@@ -1,35 +1,27 @@
 package com.tenpines.xtend.model
 
-import com.tenpines.xtend.lapses.TimeLapse
 import java.util.ArrayList
+import java.util.Arrays
 import java.util.List
 import org.joda.time.LocalDate
+import org.joda.time.LocalTime
+import com.tenpines.xtend.lapses.DayTime
+import com.tenpines.xtend.lapses.Availability
 
 class Partner {
 	
-	val List<Availability> availabilities = new ArrayList
 	
-	def addAvailability(Availability availability) {
-		val anExistingAvailability = availabilitiesFor(availability.dayOfWeek) 
-		if(anExistingAvailability == null){
-			availabilities.add(availability)
-		}else{
-			anExistingAvailability.addTimeLapses(availability.timeLapses)
-		}
+	@Property
+	List<Availability> availabilities = new ArrayList
+	
+	new(Availability... someAvailabilities) {
+		availabilities = new ArrayList(Arrays.asList(someAvailabilities))
 	}
 	
-	def isAvailableOn(LocalDate aDate, TimeLapse aTimeLapse) {
-		availabilities.exists[ anAvailability | anAvailability.isAvailable(aDate,aTimeLapse)]
+	def isAvailable(LocalDate on, LocalTime from, LocalTime to) {
+		val day = DayOfWeek.dayFromJodaIndex(on.getDayOfWeek())
+		val searchedAvailability = new Availability(new DayTime(day, from), new DayTime(day, to))
+		availabilities.exists[ availability | availability.includes(searchedAvailability) ]
 	}
-	
-	def availabilitiesFor(LocalDate date) {
-		availabilities.findFirst[ anAvailability | anAvailability.isAvailable(date)]
-	}
-	
-	def availabilitiesFor(DayOfWeek day) {
-		availabilities.findFirst[ anAvailability | anAvailability.isAvailable(day)]
-	}
-	
-	
 	
 }

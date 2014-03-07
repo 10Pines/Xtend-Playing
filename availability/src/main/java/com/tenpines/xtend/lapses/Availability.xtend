@@ -1,21 +1,19 @@
 package com.tenpines.xtend.lapses
 
-import org.joda.time.LocalTime
-
-class TimeLapse {
+class Availability {
 	
 	@Property
-	private LocalTime beggining;
+	private DayTime beggining;
 
 	@Property
-	private LocalTime end;
+	private DayTime end;
 	
-	new(LocalTime from, LocalTime to) {
+	new(DayTime from, DayTime to) {
 		this.beggining = from
 		this.end = to
 	}
 	
-	def includes(TimeLapse range) {
+	def includes(Availability range) {
 		(this.beggining <= range.beggining) && (range.end <= this.end)
 	}
 
