@@ -1,5 +1,7 @@
 package com.tenpines.xtend.model;
 
+import com.tenpines.xtend.model.DayOfWeek;
+
 public enum DayOfWeek {
 	MONDAY(1),
 	TUESDAY(2),
@@ -26,6 +28,10 @@ public enum DayOfWeek {
 
 	public int getIndex() {
 		return index;
+	}
+
+	public boolean operator_lessThan(DayOfWeek week) {
+		return this.index < week.getIndex();
 	}
 	
 }

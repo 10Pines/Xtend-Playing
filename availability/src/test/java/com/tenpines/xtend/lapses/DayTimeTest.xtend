@@ -13,4 +13,12 @@ class DayTimeTest {
 		val sixteenHours = new LocalTime(16, 00)
 		assertTrue(new DayTime(DayOfWeek.MONDAY, sixteenHours) <= new DayTime(DayOfWeek.TUESDAY, sixteenHours)) 
 	}
+	
+	@Test
+	def test2() {
+		val sixteenHours = new LocalTime(16, 00)
+		assertFalse(new DayTime(DayOfWeek.TUESDAY, sixteenHours) <= new DayTime(DayOfWeek.MONDAY, sixteenHours)) 
+	}
+	
+	
 }

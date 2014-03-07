@@ -13,8 +13,8 @@ class DayTime {
 		time = someTime
 	}
 	
-	def operator_lessEqualsThan(DayTime time) {
-		true
+	def operator_lessEqualsThan(DayTime someTime) {
+		dayOfWeek < someTime.dayOfWeek  || ( dayOfWeek.equals(someTime.dayOfWeek) && time <= someTime.time )
 	}
 	
 }
