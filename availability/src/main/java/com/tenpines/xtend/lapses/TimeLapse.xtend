@@ -16,7 +16,7 @@ class TimeLapse {
 	}
 	
 	def includes(TimeLapse range) {
-		(range.beggining >= this.beggining) && (this.end >= range.end)
+		(this.beggining <= range.beggining) && (range.end <= this.end)
 	}
 
 }
