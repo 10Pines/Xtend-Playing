@@ -1,10 +1,10 @@
 package com.tenpines.xtend.model
 
-import com.tenpines.xtend.model.timeLapse.TimeLapse
-import java.util.List
-import org.joda.time.LocalDate
+import com.tenpines.xtend.lapses.TimeLapse
 import java.util.ArrayList
 import java.util.Arrays
+import java.util.List
+import org.joda.time.LocalDate
 
 class Availability {
 	

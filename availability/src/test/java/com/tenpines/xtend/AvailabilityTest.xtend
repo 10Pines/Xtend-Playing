@@ -1,8 +1,8 @@
 package com.tenpines.xtend
 
+import com.tenpines.xtend.lapses.TimeLapse
 import com.tenpines.xtend.model.Availability
 import com.tenpines.xtend.model.DayOfWeek
-import com.tenpines.xtend.model.timeLapse.TimeLapse
 import java.util.List
 import org.joda.time.LocalDate
 import org.joda.time.LocalTime

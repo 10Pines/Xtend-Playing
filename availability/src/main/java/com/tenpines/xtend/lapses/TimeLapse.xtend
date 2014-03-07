@@ -1,4 +1,4 @@
-package com.tenpines.xtend.model.timeLapse
+package com.tenpines.xtend.lapses
 
 import org.joda.time.LocalTime
 

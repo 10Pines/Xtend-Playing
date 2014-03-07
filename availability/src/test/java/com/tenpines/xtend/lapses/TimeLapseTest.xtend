@@ -1,6 +1,5 @@
-package com.tenpines.xtend.timeLapse
+package com.tenpines.xtend.lapses
 
-import com.tenpines.xtend.model.timeLapse.TimeLapse
 import org.joda.time.LocalTime
 import org.junit.Test
 
