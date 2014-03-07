@@ -1,11 +1,11 @@
 package com.tenpines.xtend.lapses
 
 import com.tenpines.xtend.model.DayOfWeek
+import org.joda.time.LocalDate
 import org.joda.time.LocalTime
 import org.junit.Test
 
 import static org.junit.Assert.*
-import org.joda.time.DateTime
 
 class DayTimeTest {
 	
@@ -28,8 +28,8 @@ class DayTimeTest {
 	
 	@Test
 	def test4() {
-		val today = new DateTime(2014, 3, 4, 15, 0)
-		assertEquals(DayOfWeek.TUESDAY, DayOfWeek.dayFromJodaIndex(today.getDayOfWeek));
+		val today = new LocalDate(2014, 3, 4)
+		assertTrue(DayOfWeek.TUESDAY.belongs(today));
 		//Cant use the property sintax, xtend assumes it's an extension method and passes the enum class as first argument in the generated code
 		DayOfWeek.setToday(today) 
 		val sixteenHours = new LocalTime(16, 00)

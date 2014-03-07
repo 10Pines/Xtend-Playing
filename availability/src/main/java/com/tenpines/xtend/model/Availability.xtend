@@ -25,17 +25,11 @@ class Availability {
 	}
 	
 	def isAvailable(Object aDate){
-		switch(aDate){
-			LocalDate :{ 
-				val DayOfWeek dayOfWeekForAvailability = DayOfWeek.dayFromJodaIndex(aDate.getDayOfWeek) 
-				return dayOfWeek.equals(dayOfWeekForAvailability)
-			}
-			DayOfWeek : {
-				return dayOfWeek.equals(aDate)
-			}
+		switch(aDate) {
+			LocalDate :	return dayOfWeek.belongs(aDate)
+			DayOfWeek : return dayOfWeek.equals(aDate)
 			default : throw new UnsupportedOperationException("Unhandled condition")
 		}
-		
 	}
 	
 	def addTimeLapses(List<TimeLapse> someLapses){

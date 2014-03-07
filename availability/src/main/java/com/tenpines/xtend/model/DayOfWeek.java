@@ -1,8 +1,6 @@
 package com.tenpines.xtend.model;
 
-import org.joda.time.DateTime;
-
-import com.tenpines.xtend.model.DayOfWeek;
+import org.joda.time.LocalDate;
 
 public enum DayOfWeek {
 	MONDAY(1),
@@ -13,7 +11,7 @@ public enum DayOfWeek {
 	SATURDAY(6),
 	SUNDAY(7);
 
-	private static DateTime now = DateTime.now();
+	private static LocalDate now = LocalDate.now();
 	private int index;
 	
 	private DayOfWeek(int index){
@@ -42,10 +40,16 @@ public enum DayOfWeek {
 		return null;
 	}
 	
-	public static void setToday(DateTime aDateTime) {
-		now = aDateTime;
+	public static void setToday(LocalDate aDate) {
+		now = aDate;
 	}
-	
+
+
+	public boolean belongs(LocalDate aDate) {
+		DayOfWeek dayOfWeek = DayOfWeek.dayFromJodaIndex(aDate.getDayOfWeek());
+		return this.equals(dayOfWeek);
+	}
+
 }
 
 
