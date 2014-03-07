@@ -10,7 +10,7 @@ import static org.junit.Assert.*
 class DayTimeTest {
 	
 	@Test
-	def test1() {
+	def testDayIsBefore() {
 		val today = new LocalDate(2014, 3, 7)
 		assertTrue(DayOfWeek.FRIDAY.belongs(today));
 		//Cant use the property sintax, xtend assumes it's an extension method and passes the enum class as first argument in the generated code
@@ -20,7 +20,7 @@ class DayTimeTest {
 	}
 	
 	@Test
-	def test2() {
+	def dayIsntBefore() {
 		val today = new LocalDate(2014, 3, 7)
 		assertTrue(DayOfWeek.FRIDAY.belongs(today));
 		DayOfWeek.setToday(today) 
@@ -29,7 +29,7 @@ class DayTimeTest {
 	}
 	
 	@Test
-	def test3() {
+	def sameDayAndBeforeTime() {
 		val today = new LocalDate(2014, 3, 7)
 		DayOfWeek.setToday(today) 
 		assertTrue(DayOfWeek.FRIDAY.belongs(today));
@@ -37,7 +37,7 @@ class DayTimeTest {
 	}
 	
 	@Test
-	def test4() {
+	def testTakingIntoAccountTodayDate() {
 		val today = new LocalDate(2014, 3, 4)
 		assertTrue(DayOfWeek.TUESDAY.belongs(today));
 		DayOfWeek.setToday(today) 
@@ -46,7 +46,7 @@ class DayTimeTest {
 	}
 	
 	@Test
-	def test5() {
+	def todayIsBefore() {
 		val today = new LocalDate(2014, 3, 4)
 		assertTrue(DayOfWeek.TUESDAY.belongs(today));
 		DayOfWeek.setToday(today) 
@@ -55,7 +55,7 @@ class DayTimeTest {
 	}
 	
 	@Test
-	def test6() {
+	def aDayIsntBeforeToday() {
 		val today = new LocalDate(2014, 3, 4)
 		assertTrue(DayOfWeek.TUESDAY.belongs(today));
 		DayOfWeek.setToday(today) 

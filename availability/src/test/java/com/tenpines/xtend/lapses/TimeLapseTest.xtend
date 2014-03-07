@@ -9,7 +9,6 @@ class TimeLapseTest {
 	
 	val range = new TimeLapse(new LocalTime(15, 0), new LocalTime(18, 0))
 	
-	
 	@Test
 	def void wantedIntervalIsWithinTheGivenRange() {
 		val halfPastThree = new LocalTime(15, 30)
@@ -51,5 +50,4 @@ class TimeLapseTest {
 		val halfPastEight = new LocalTime(20, 30)
 		assertFalse( range.includes(new TimeLapse(halfPastSix, halfPastEight)) )
 	}
-	
 }
