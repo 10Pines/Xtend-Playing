@@ -20,5 +20,10 @@ class DayTimeTest {
 		assertFalse(new DayTime(DayOfWeek.TUESDAY, sixteenHours) <= new DayTime(DayOfWeek.MONDAY, sixteenHours)) 
 	}
 	
+	@Test
+	def test3() {
+		assertTrue(new DayTime(DayOfWeek.MONDAY, new LocalTime(16, 00)) <= new DayTime(DayOfWeek.MONDAY, new LocalTime(16, 30))) 
+	}
+	
 	
 }
