@@ -11,18 +11,28 @@ class DayTimeTest {
 	
 	@Test
 	def test1() {
+		val today = new LocalDate(2014, 3, 7)
+		assertTrue(DayOfWeek.FRIDAY.belongs(today));
+		//Cant use the property sintax, xtend assumes it's an extension method and passes the enum class as first argument in the generated code
+		DayOfWeek.setToday(today) 
 		val sixteenHours = new LocalTime(16, 00)
 		assertTrue(new DayTime(DayOfWeek.MONDAY, sixteenHours) <= new DayTime(DayOfWeek.TUESDAY, sixteenHours)) 
 	}
 	
 	@Test
 	def test2() {
+		val today = new LocalDate(2014, 3, 7)
+		assertTrue(DayOfWeek.FRIDAY.belongs(today));
+		DayOfWeek.setToday(today) 
 		val sixteenHours = new LocalTime(16, 00)
 		assertFalse(new DayTime(DayOfWeek.TUESDAY, sixteenHours) <= new DayTime(DayOfWeek.MONDAY, sixteenHours)) 
 	}
 	
 	@Test
 	def test3() {
+		val today = new LocalDate(2014, 3, 7)
+		DayOfWeek.setToday(today) 
+		assertTrue(DayOfWeek.FRIDAY.belongs(today));
 		assertTrue(new DayTime(DayOfWeek.MONDAY, new LocalTime(16, 00)) <= new DayTime(DayOfWeek.MONDAY, new LocalTime(16, 30))) 
 	}
 	
@@ -30,10 +40,27 @@ class DayTimeTest {
 	def test4() {
 		val today = new LocalDate(2014, 3, 4)
 		assertTrue(DayOfWeek.TUESDAY.belongs(today));
-		//Cant use the property sintax, xtend assumes it's an extension method and passes the enum class as first argument in the generated code
 		DayOfWeek.setToday(today) 
 		val sixteenHours = new LocalTime(16, 00)
 		assertFalse(new DayTime(DayOfWeek.MONDAY, sixteenHours) <= new DayTime(DayOfWeek.WEDNESDAY, sixteenHours)) 
+	}
+	
+	@Test
+	def test5() {
+		val today = new LocalDate(2014, 3, 4)
+		assertTrue(DayOfWeek.TUESDAY.belongs(today));
+		DayOfWeek.setToday(today) 
+		val sixteenHours = new LocalTime(16, 00)
+		assertTrue(new DayTime(DayOfWeek.TUESDAY, sixteenHours) <= new DayTime(DayOfWeek.WEDNESDAY, sixteenHours)) 
+	}
+	
+	@Test
+	def test6() {
+		val today = new LocalDate(2014, 3, 4)
+		assertTrue(DayOfWeek.TUESDAY.belongs(today));
+		DayOfWeek.setToday(today) 
+		val sixteenHours = new LocalTime(16, 00)
+		assertFalse(new DayTime(DayOfWeek.MONDAY, sixteenHours) <= new DayTime(DayOfWeek.TUESDAY, sixteenHours)) 
 	}
 	
 }
