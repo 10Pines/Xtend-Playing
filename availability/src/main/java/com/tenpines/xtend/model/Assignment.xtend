@@ -11,7 +11,7 @@ class Assignment {
 	Partner partner
 	
 	def assign(Partner partner){
-		if (! partner.isAvailable(date,startTime,endTime)){
+		if (! this.canBeCoveredBy(partner)){
 			throw new PartnerNotAvailableException("Partner not available on: «date» («startTime» to: «endTime»)")
 		}
 		this.partner = partner
@@ -19,6 +19,10 @@ class Assignment {
 	
 	def getPartner(){
 		partner
+	}
+	
+	def canBeCoveredBy(Partner partner) {
+		partner.isAvailable(date,startTime,endTime)
 	}
 		
 }

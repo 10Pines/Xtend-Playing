@@ -45,4 +45,5 @@ class PartnerTest {
 		val aWednesday = new LocalDate(2014,02,12)
 		assertFalse( partner.isAvailable(aWednesday, new LocalTime(7, 30), new LocalTime(23, 59)))
 	}
+	
 }
