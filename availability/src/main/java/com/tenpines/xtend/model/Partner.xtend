@@ -1,12 +1,12 @@
 package com.tenpines.xtend.model
 
+import com.google.common.collect.Lists
+import com.tenpines.xtend.lapses.Availability
+import com.tenpines.xtend.lapses.DayTime
 import java.util.ArrayList
-import java.util.Arrays
 import java.util.List
 import org.joda.time.LocalDate
 import org.joda.time.LocalTime
-import com.tenpines.xtend.lapses.DayTime
-import com.tenpines.xtend.lapses.Availability
 
 class Partner {
 	
@@ -15,7 +15,7 @@ class Partner {
 	List<Availability> availabilities = new ArrayList
 	
 	new(Availability... someAvailabilities) {
-		availabilities = new ArrayList(Arrays.asList(someAvailabilities))
+		availabilities = Lists.newArrayList(someAvailabilities)
 	}
 	
 	def isAvailable(LocalDate on, LocalTime from, LocalTime to) {
