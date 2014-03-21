@@ -76,7 +76,7 @@ class AssigmentTest {
 		assignment.startTime = new LocalTime(10,00)
 		assignment.endTime = new LocalTime(18,00)
 		
-		assertEquals(#[availablePartner] , assignment.whoCoverYou(#[availablePartner, unAvailablePartner]))
+		assertEquals(#[availablePartner] , assignment.whoCoversYou(#[availablePartner, unAvailablePartner]))
 	}
 	
 	

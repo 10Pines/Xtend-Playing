@@ -27,7 +27,7 @@ class Assignment {
 		partner.isAvailable(date,startTime,endTime)
 	}
 	
-	def List<Partner> whoCoverYou(List<Partner> partners) {
+	def List<Partner> whoCoversYou(List<Partner> partners) {
 		Lists.newArrayList(partners.filter[partner | this.canBeCoveredBy(partner)])
 	}
 		
