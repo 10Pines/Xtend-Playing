@@ -3,6 +3,8 @@ package com.tenpines.xtend.model
 import com.tenpines.xtend.model.exceptions.PartnerNotAvailableException
 import org.joda.time.LocalDate
 import org.joda.time.LocalTime
+import java.util.List
+import com.google.common.collect.Lists
 
 class Assignment {
 	@Property LocalDate date
@@ -23,6 +25,10 @@ class Assignment {
 	
 	def canBeCoveredBy(Partner partner) {
 		partner.isAvailable(date,startTime,endTime)
+	}
+	
+	def List<Partner> whoCoverYou(List<Partner> partners) {
+		Lists.newArrayList(partners.filter[partner | this.canBeCoveredBy(partner)])
 	}
 		
 }
